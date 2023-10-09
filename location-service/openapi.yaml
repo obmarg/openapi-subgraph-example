@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Location Service
+  version: 1.2
+paths:
+  /locations:
+    get:
+      summary: Returns all the locations
+      responses:
+        "200": # status code
+          description: "a response"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Location"
+  /locations/{id}:
+    get:
+      summary: Returns a specific location
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: "a response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Location"
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required: ["id", "name"]

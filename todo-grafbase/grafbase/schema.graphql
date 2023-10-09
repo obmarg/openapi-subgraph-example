@@ -1,7 +1,0 @@
-extend schema
-  @federation(version: "2.3")
-  @openapi(
-    name: "todos"
-    namespace: false
-    schema: "http://localhost:8086/schema.yaml"
-  )

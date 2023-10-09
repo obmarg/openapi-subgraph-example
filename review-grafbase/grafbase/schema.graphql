@@ -1,0 +1,9 @@
+extend schema
+  @federation(version: "2.3")
+  @openapi(
+    name: ""
+    namespace: false
+    url: "http://localhost:8085"
+    schema: "http://localhost:8085/openapi.yaml"
+    transforms: { queryNaming: OPERATION_ID }
+  )
