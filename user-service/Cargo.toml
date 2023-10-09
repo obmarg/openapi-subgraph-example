@@ -1,0 +1,15 @@
+[package]
+name = "user-service"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.6"
+axum-macros = "0.3"
+serde.features = ["derive"]
+serde.version = "1"
+serde_json = "1"
+tokio.features = ["macros", "rt-multi-thread"]
+tokio.version = "1"
