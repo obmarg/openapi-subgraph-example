@@ -1,13 +1,13 @@
 openapi: 3.0.0
 info:
-  title: User Service
+  title: Todo Service
 paths:
-  /user/{user_id}:
+  /user_todos/{user_id}:
     get:
-      summary: Returns a user.
+      summary: Returns all the todos for a user
       parameters:
         - in: path
-          name: user_id
+          name: id
           required: true
           schema:
             type: string
@@ -25,6 +25,14 @@ components:
       properties:
         user_id:
           type: string
-        name:
+        todos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Todo"
+      required: ["user_id", "todos"]
+    Todo:
+      type: object
+      properties:
+        title:
           type: string
-      required: ["user_id", "name"]
+      required: ["title"]

@@ -18,7 +18,7 @@ async fn main() {
 
 #[derive(serde::Serialize)]
 struct User<'a> {
-    id: &'a str,
+    user_id: &'a str,
     name: &'a str,
 }
 
@@ -26,11 +26,11 @@ struct User<'a> {
 async fn user(Path(user_id): Path<u32>) -> impl IntoResponse {
     let user = match user_id {
         0 => User {
-            id: "0",
+            user_id: "0",
             name: "Alice",
         },
         1 => User {
-            id: "1",
+            user_id: "1",
             name: "Bob",
         },
         _ => panic!("unknown user!!!"),
