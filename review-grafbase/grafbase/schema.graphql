@@ -7,3 +7,11 @@ extend schema
     schema: "http://localhost:8085/openapi.yaml"
     transforms: { queryNaming: OPERATION_ID }
   )
+
+extend type Review {
+  location: Location @resolver(name: "review/location")
+}
+
+type Location @key(fields: "id", resolvable: false) {
+  id: String!
+}
