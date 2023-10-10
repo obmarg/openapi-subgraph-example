@@ -5,7 +5,7 @@ use serde_json::json;
 async fn main() {
     // build our application with a single route
     let app = Router::new()
-        .route("/latest_reviews", get(latest_reviews))
+        .route("/latest-reviews", get(latest_reviews))
         .route(
             "/openapi.yaml",
             get(|| async { include_str!("../openapi.yaml") }),
