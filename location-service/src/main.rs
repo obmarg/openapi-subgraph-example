@@ -34,7 +34,7 @@ async fn location(Path(id): Path<u32>) -> impl IntoResponse {
         })
     } else if id == 2 {
         Json(Location {
-            id: "1",
+            id: "2",
             name: "Some other shithole",
         })
     } else {
@@ -50,7 +50,7 @@ async fn locations() -> impl IntoResponse {
             name: "Grand Central Hotel",
         },
         Location {
-            id: "1",
+            id: "2",
             name: "Some other shithole",
         },
     ])
