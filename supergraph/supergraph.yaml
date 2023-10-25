@@ -2,11 +2,9 @@ federation_version: =2.3.2
 subgraphs:
   locations:
     schema:
-      subgraph_url: http://localhost:8091/graphql
-      introspection_headers:  # Optional headers to include in introspection request
-        x-api-key: "whatever"
+      subgraph_url: http://localhost:4001/graphql
+        #introspection_headers:  # Optional headers to include in introspection request
   reviews:
     schema:
-      subgraph_url: http://localhost:8090/graphql
-      introspection_headers:  # Optional headers to include in introspection request
-        x-api-key: "whatever"
+      subgraph_url: http://localhost:4000/graphql
+        #introspection_headers:  # Optional headers to include in introspection request
