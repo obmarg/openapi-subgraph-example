@@ -2,11 +2,32 @@ openapi: 3.0.0
 info:
   title: Review Service
   version: 1.2
+servers:
+  - url: http://localhost:8085
 paths:
   /latest-reviews:
     get:
       summary: Returns the latest reviews
       operationId: latestReviews
+      responses:
+        "200": # status code
+          description: A JSON array of reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /location-reviews/{locationId}:
+    get:
+      summary: Returns the reviews for a location
+      operationId: locationReviews
+      parameters:
+        - in: path
+          name: locationId
+          required: true
+          schema:
+            type: string
       responses:
         "200": # status code
           description: A JSON array of reviews

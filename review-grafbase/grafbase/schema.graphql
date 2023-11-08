@@ -1,7 +1,7 @@
 extend schema
   @federation(version: "2.3")
   @openapi(
-    name: ""
+    name: "reviewService"
     namespace: false
     url: "http://localhost:8085"
     schema: "http://localhost:8085/openapi.yaml"
@@ -12,6 +12,7 @@ extend type Review {
   location: Location @resolver(name: "review/location")
 }
 
-type Location @key(fields: "id", resolvable: false) {
+type Location @key(fields: "id") {
   id: String!
+  reviewsForLocation: [Review] @join(select: "locationReviews(locationId: $id)")
 }

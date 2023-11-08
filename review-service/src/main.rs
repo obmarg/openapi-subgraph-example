@@ -6,6 +6,7 @@ async fn main() {
     // build our application with a single route
     let app = Router::new()
         .route("/latest-reviews", get(latest_reviews))
+        .route("/location-reviews/:locationId", get(location_reviews))
         .route(
             "/openapi.yaml",
             get(|| async { include_str!("../openapi.yaml") }),
@@ -48,4 +49,33 @@ async fn latest_reviews() -> impl IntoResponse {
             location_id: "2",
         },
     ])
+}
+
+#[axum_macros::debug_handler]
+async fn location_reviews(Path(location_id): Path<u32>) -> impl IntoResponse {
+    if location_id == 1 {
+        Json([
+            Review {
+                id: "1",
+                comment: "Nice Place",
+                rating: 100,
+                location_id: "1",
+            },
+            Review {
+                id: "2",
+                comment: "Hated it",
+                rating: 0,
+                location_id: "1",
+            },
+        ])
+        .into_response()
+    } else {
+        Json([Review {
+            id: "3",
+            comment: "it was ok",
+            rating: 0,
+            location_id: "2",
+        }])
+        .into_response()
+    }
 }
